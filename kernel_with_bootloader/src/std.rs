@@ -24,6 +24,18 @@ macro_rules! println {
     }};
 }
 
+#[macro_export]
+// Assinment CA2B input_str macro
+macro_rules! input_str {
+    ($($arg:tt)*) => {{
+        print!("{}", format_args!($($arg)*));
+        match input_str(){
+            Some(value) => value, // returns the value that was inputted
+            None => "".to_owned(), // returns an empty string
+        }
+    }};
+}
+
 pub fn input_str() -> Option<String> {
     let mut input: String = "".to_string();
     let mut input_counter:u32 = 0; //keep a count so that backspaced induced pop is not allowed beyond the count
